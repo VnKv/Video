@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="StylePrincipal.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Video</title>
+</head>
+<body>
+<a href="Video.html">cambio de pagina</a>
+<header>
+	<nav class="navbar navbar-static-top" role="navigation">
+		<div class="container">
+			<!--Cabezera de Navegacion y Boton de menu-->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegation-kv">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#" class="navbar-brand menu">KV</a>
+			</div>
+			<!--Menu de Navegacion-->
+			<div class="collapse navbar-collapse" id="navegation-kv">
+				<ul class="nav navbar-nav">
+					<li class="active"><a class="menu" href="">Inicio1</a></li>
+					<li><a class="menu" href="">Inicio2</a></li>
+					<li><a class="menu" href="">Inicio3</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="right"><a class="menu" href="">CrearCuenta</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
+<!--Seccion Principal-->
+<section class="main container">	
+	<!--Formulario Inicio de Sesion-->
+	<div class="container">
+		<div  id="autentificacion" class="row">
+			<div  class="col-md-4 col-md-offset-8">
+				<br>
+				<br>
+				<br>
+				<br>	
+				<form>
+				  <div class="form-group">
+				    <label for="inputEmail">Email</label>
+				    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+				  </div>
+				  <div class="form-group">
+				    <label for="inputContrasena">Contraseña</label>
+				    <input type="password" class="form-control" id="inputContrasena" placeholder="Contraseña">
+				  </div>
+				  <button id="inicioSesion" type="submit" class="btn">Iniciar Sesion</button>
+				</form>
+				<br>
+				<br>
+				<br>
+				<br>
+			</div>
+		</div>
+	</div>
+	<br>
+	<!--Barra de Categorias-->
+	<div id="categorias" class="container">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+					<ul class="nav nav-pills">
+						<li role="presentation"><a class="btn categ" role="button">Terror</a></li>
+						<li role="presentation"><a class="btn categ" role="button">Accion</a></li>
+						<li role="presentation"><a class="btn categ" role="button">Aventura</a></li>
+						<li role="presentation"><a class="btn categ" role="button">Comedia</a></li>
+					</ul>
+			</div>
+		</div>
+	</div>
+	<!--Bloque de Videos-->
+	<div id="videos" class="container">
+		<br>
+		<br>
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="row">
+					<!--Tarjeta Individual de Video-->
+					<div class="col-md-4">
+						<h4 class="tituloPelicula">Titulo Video</h4>
+						<div class="thumbnail">
+					      	<img class="imgPelicula" src="img/anime.jpg" alt="...">
+				    	</div>
+				    	<div class="caption">
+				        <p class="valor">
+				        	<span class="glyphicon glyphicon-heart"></span>
+				        	<span class="glyphicon glyphicon-heart"></span>
+				        	<span class="glyphicon glyphicon-heart"></span>
+				        	<span class="glyphicon glyphicon-heart"></span>
+				        	<span class="glyphicon glyphicon-heart"></span>
+				        </p>	        
+				      </div>
+					</div>
+					<!--Tarjeta Individual de Video-->
+					<div class="col-md-4">
+						<h4 class="tituloPelicula">Titulo Video</h4>
+						<div class="thumbnail">
+					      	<img class="imgPelicula" src="img/anime.jpg" alt="...">
+				    	</div>
+				    	<div class="caption">
+				        <p class="valor">
+				        	<span class="glyphicon glyphicon-heart"></span>
+				        	<span class="glyphicon glyphicon-heart"></span>
+				        	<span class="glyphicon glyphicon-heart"></span>
+				        	<span class="glyphicon glyphicon-heart"></span>
+				        	<span class="glyphicon glyphicon-heart"></span>
+				        </p>	        
+				      </div>
+					</div>
+					<!--Tarjeta Individual de Video-->
+					<div class="col-md-4">
+						<h4 class="tituloPelicula">Titulo Video</h4>
+						<div class="thumbnail">
+					      	<img class="imgPelicula" src="img/anime.jpg" alt="...">
+				    	</div>
+				    	<div class="caption">
+				        <p class="valor">
+				        	<span class="glyphicon glyphicon-heart"></span>
+				        	<span class="glyphicon glyphicon-heart"></span>
+				        	<span class="glyphicon glyphicon-heart"></span>
+				        	<span class="glyphicon glyphicon-heart"></span>
+				        	<span class="glyphicon glyphicon-heart"></span>
+				        </p>	        
+				      </div>
+					</div>
+				</div>
+		    </div>
+		</div>
+	</div>
+</section>
+<footer></footer>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script type="text/javascript" src="clasificacionVideo.js"></script>
+</body>
+</html>

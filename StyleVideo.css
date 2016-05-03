@@ -1,0 +1,30 @@
+header{
+	background: #031634;
+}
+header a{
+	color: white;
+}
+body{
+	background-color: #C2B79B; 
+}
+#buscar{
+	background-color: #033649;
+	color:white;
+}
+.valor{
+	float: right;
+}
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+    z-index: 2;
+    color: #fff;
+    background-color: #033649;
+    border-color: #033649;
+}
+.imgContenedor:hover{
+transform:scale(1.05); /*Mozilla:Modificamos tamaño a escala*/
+transition-duration: 0.5s; /*Mozilla:Duración de la animació*/
+background: #3A5F6F;
+color:white;
+z-index: 2;
+border-radius: 2px;
+}

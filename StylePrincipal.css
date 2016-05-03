@@ -1,0 +1,34 @@
+header{
+	background: #031634;
+}
+header a{
+	color: white;
+}
+#imgFondo{
+	height: 200px;
+}
+body{
+	background-color: #C2B79B; 
+}
+#categorias{
+	background-color: #033649; 	
+}
+#autentificacion{
+	background-image: url(img/mus.jpg);
+}
+div#categorias a.categ{
+	color: white;	
+}
+.valor{
+	float: right;
+}
+div#videos h4{
+	text-align: center;
+}
+div#categorias a.categ:hover{
+    color:black;
+}
+#inicioSesion{
+	background: #3A5F6F;
+	color:white;
+}
