@@ -31,3 +31,10 @@ div#videos h4{
 	background-color: #033649;
 	color: white;
 }
+div#categorias a.categ:hover{
+    color:black;
+}
+#inicioSesion{
+	background: #3A5F6F;
+	color:white;
+}
