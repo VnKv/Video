@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registro Usuario</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="styleReg.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+	<header>
+		<div class="container">
+			<h3 id="cabecera">Registro de nuevo usuario</h3>
+		</div>
+	</header>
+	<br> <br>
+	<section class="main container">
+		<div class="row">
+			<div class="col-md-6">
+				<img src="img/gato.jpg" id="img">
+			</div>
+			<div class="col-md-6">
+				<form>
+					<div class="form-group">
+					    <label for="nombre">Nombre</label>
+					    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+					</div>
+					<div class="form-group">
+					    <label for="apellido">Apellido</label>
+					    <input type="text" class="form-control" id="apellido" placeholder="Apellido">
+					</div>
+					<div class="form-group">
+					    <label for="email">Correo Electronico</label>
+					    <input type="email" class="form-control" id="email" placeholder="Email">
+					</div>
+					<div class="form-group">
+					    <label for="password">Contrase&ntilde;a</label>
+					    <input type="password" class="form-control" id="password" placeholder="Contrase&ntilde;a">
+					</div>
+					<div class="form-group">
+					    <label for="password1">Verificar Contrase&ntilde;a</label>
+					    <input type="password" class="form-control" id="password1" placeholder="Contrase&ntilde;a">
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Registrarme" id="submit">
+					</div>	
+				</form>
+			</div>
+		</div>
+	</section>
+<script>
+	var nombre = document.getElementById('nombre');
+	var apellido = document.getElementById('apellido');
+	var correo = document.getElementById('email');
+	var cont1 = document.getElementById('password');
+	var cont2 = document.getElementById('password1');
+	var validar = document.getElementById('submit');
+
+	validar.onclick =function(){
+		if(cont1.value == cont2.value){
+			alert('contrasenas coinciden!');
+		}
+		alert('nombre ' +nombre.value+',apellido' + apellido.value +',correo' + correo.value);
+	}
+
+</script>
+</body>
+</html>

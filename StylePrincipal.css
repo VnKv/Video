@@ -1,0 +1,33 @@
+header{
+	background: #031634;
+}
+header a{
+	color: white;
+}
+#imgFondo{
+	height: 200px;
+}
+body{
+	background-color: #C2B79B; 
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 18px;
+}
+#categorias{
+	background-color: #033649; 	
+}
+#autentificacion{
+	background-image: url(img/guitar.jpg);
+}
+div#categorias a.categ{
+	color: white;	
+}
+.valor{
+	float: right;
+}
+div#videos h4{
+	text-align: center;
+}
+#reg{
+	background-color: #033649;
+	color: white;
+}

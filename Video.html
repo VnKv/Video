@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="StyleVideo.css">
+	<title></title>
+</head>
+<body>
+<header>
+	<nav class="navbar navbar-static-top" role="navigation">
+		<div class="container">
+			<!--Cabezera de Navegacion y Boton de menu-->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegation-kv">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#" class="navbar-brand">KV</a>
+			</div>
+			<!--Menu de Navegacion-->
+			<div class="collapse navbar-collapse" id="navegation-kv">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="">Inicio1</a></li>
+					<li><a href="">Inicio2</a></li>
+					<li><a href="">Inicio3</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="right"><a href="Principal.html" id="cerrarSesion">Cerrar Sesion</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
+<section class="main container">
+	<div class="row">
+		<div class="col-md-3">
+			<form>
+				<div class="input-group">
+			      <input type="text" class="form-control" placeholder="Buscar">
+			      <span class="input-group-btn">
+			        <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span></button>
+			      </span>
+			    </div>
+			</form>
+		    
+		    <br>
+			<div class="list-group">
+			  <a href="#" class="list-group-item">Terror</a>
+			  <a href="#" class="list-group-item">Accion</a>
+			  <a href="#" class="list-group-item">Comedia</a>
+			  <a href="#" class="list-group-item">Aventura</a>
+			  <a href="#" class="list-group-item">Romance</a>
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-1">
+			<article>
+				<video width="100%" controls="controls" preload="none" poster="img/gato.jpg">
+					<source src="toradora.mp4" type="video/mp4">
+				</video>
+				<article>
+					<h5><strong>Descripcion</strong></h5>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac  neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum in tempus ut, vehicula eu diam. Pellentesque rhoncus aliquam mattis. Ut vulputate eros sed felis sodales nec vulputate justo hendrerit. Vivamus varius pretium ligula, a aliquam odio euismod sit amet. Quisque laoreet sem sit amet orci ullamcorper at ultricies metus viverra. Pellentesque arcu mauris, malesuada quis ornare accumsan, blandit sed diam.</p>
+				</article>
+			</article>	
+		</div>
+	</div>
+</section>
+<script>
+	cerrar = document.getElementById('cerrarSesion');
+	cerrar.onclick = function() {
+		location.href="Principal.html"; 
+	}
+
+</script>
+</body>
+</html>
