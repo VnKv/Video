@@ -28,7 +28,7 @@
 					<li><a class="menu" href="">Inicio3</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li class="right"><a class="menu" href="">CrearCuenta</a></li>
+					<li class="right"><a class="menu" href="" id="crearCuenta">CrearCuenta</a></li>
 				</ul>
 			</div>
 		</div>
@@ -145,6 +145,10 @@
 	var password = document.getElementById('inputContrasena');
 	//var principal = Video.html;
 
+	var crearC = document.getElementById('crearCuenta');
+	crearC.addEventListener('click', crearCuenta);
+	//link.addEventListener('click', leer);
+
 	buttonReg.onclick = function(){
 		if(email.value == "kv.123@gmail.com" && password.value =="123"){
 			//alert('autentificacion correcta');
@@ -154,6 +158,11 @@
 		else{
 			alert('Correo electronico o Contraseña invalida');
 		}
+	}
+
+	function crearCuenta() {
+		alert('Va a crearse cuenta');
+		crearC.setAttribute("href", "Reg.html");
 	}
 </script>
 <script type="text/javascript" src="clasificacionVideo.js"></script>
