@@ -1,13 +1,13 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="StylePrincipal.css">
+	<link rel="stylesheet" type="text/css" href="scripts/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="styles/index.css">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Video</title>
 </head>
 <body>
-<a href="Video.html">cambio de pagina</a>
+<a href="views/video.html">cambio de pagina</a>
 <header>
 	<nav class="navbar navbar-static-top" role="navigation">
 		<div class="container">
@@ -28,7 +28,7 @@
 					<li><a class="menu" href="">Inicio3</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li class="right"><a class="menu" href="" id="crearCuenta">CrearCuenta</a></li>
+					<li class="right"><a class="menu" href="views/Reg.html" id="crearCuenta">CrearCuenta</a></li>
 				</ul>
 			</div>
 		</div>
@@ -87,7 +87,7 @@
 					<div class="col-md-4">
 						<h4 class="tituloPelicula">Titulo Video</h4>
 						<div class="thumbnail">
-					      	<img class="imgPelicula" src="img/anime.jpg" alt="...">
+					      	<img class="imgPelicula" src="images/anime.jpg" alt="...">
 				    	</div>
 				    	<div class="caption">
 				        <p class="valor">
@@ -103,7 +103,7 @@
 					<div class="col-md-4">
 						<h4 class="tituloPelicula">Titulo Video</h4>
 						<div class="thumbnail">
-					      	<img class="imgPelicula" src="img/anime.jpg" alt="...">
+					      	<img class="imgPelicula" src="images/anime.jpg" alt="...">
 				    	</div>
 				    	<div class="caption">
 				        <p class="valor">
@@ -119,7 +119,7 @@
 					<div class="col-md-4">
 						<h4 class="tituloPelicula">Titulo Video</h4>
 						<div class="thumbnail">
-					      	<img class="imgPelicula" src="img/anime.jpg" alt="...">
+					      	<img class="imgPelicula" src="images/anime.jpg" alt="...">
 				    	</div>
 				    	<div class="caption">
 				        <p class="valor">
@@ -137,34 +137,10 @@
 	</div>
 </section>
 <footer></footer>
-<script src="js/jquery.min.js"></script>
-<!--<script src="js/bootstrap.js"></script>-->
-<script>
-	var buttonReg = document.getElementById('inicioSesion');
-	var email = document.getElementById('inputEmail');
-	var password = document.getElementById('inputContrasena');
-	//var principal = Video.html;
 
-	var crearC = document.getElementById('crearCuenta');
-	crearC.addEventListener('click', crearCuenta);
-	//link.addEventListener('click', leer);
+<script src="scripts/bootstrap/js/jquery.min.js"></script>
+<script src="scripts/bootstrap/js/bootstrap.js"></script>
+<script src="scripts/index.js"></script>
 
-	buttonReg.onclick = function(){
-		if(email.value == "kv.123@gmail.com" && password.value =="123"){
-			//alert('autentificacion correcta');
-			location.href="Video.html"; 
-			return false;
-		}
-		else{
-			alert('Correo electronico o Contraseña invalida');
-		}
-	}
-
-	function crearCuenta() {
-		alert('Va a crearse cuenta');
-		crearC.setAttribute("href", "Reg.html");
-	}
-</script>
-<script type="text/javascript" src="clasificacionVideo.js"></script>
 </body>
 </html>
