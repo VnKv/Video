@@ -49,22 +49,27 @@ var json = {
 			imagen: "naruto4.jpg",
 		}]
 };
+
 var categorias = document.querySelectorAll(".categ")
 var tarjetas_titulo = document.querySelectorAll(".tituloPelicula");
 var tarjetas_img = document.querySelectorAll(".imgPelicula");
-var terror = categorias[0];
+/*var terror = categorias[0];
 var accion = categorias[1];
 var aventura = categorias[2];
-var comedia = categorias[3];
+var comedia = categorias[3];*/
 
-terror.addEventListener("click",clickTerror);
+function buscarGenero(genero){
+	var peliculas = buscarJson(genero);
+	cargarTarjetas(peliculas);
+}
+
+/*terror.addEventListener("click",click,"terror");
 accion.addEventListener("click",clickAccion);
 aventura.addEventListener("click",clickAventura);
-comedia.addEventListener("click",clickComedia);
+comedia.addEventListener("click",clickComedia);*/
 
-function clickTerror(){
+/*function clickk(genero){
 	var peliculas = buscarJson("terror");
-	console.log(peliculas);
 	cargarTarjetas(peliculas);
 	console.log(terror);
 }
@@ -82,7 +87,7 @@ function clickComedia(){
 	var peliculas = buscarJson("comedia");
 	cargarTarjetas(peliculas);
 	console.log(comedia);
-}
+}*/
 
 function buscarJson(genero){
 	var conjuntoGenero = [];
