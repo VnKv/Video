@@ -16,7 +16,7 @@ body{
 	background-color: #033649; 	
 }
 #autentificacion{
-	background-image: url(img/guitar.jpg);
+	background-image: url(../images/guitar.jpg);
 }
 div#categorias a.categ{
 	color: white;	
