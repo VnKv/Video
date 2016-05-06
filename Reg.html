@@ -42,7 +42,7 @@
 					    <input type="password" class="form-control" id="password1" placeholder="Contrase&ntilde;a">
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Registrarme" id="submit">
+						<input type="btn btn-default" value="Registrarme" id="submit">
 					</div>	
 				</form>
 			</div>
@@ -60,8 +60,11 @@
 		if(cont1.value == cont2.value){
 			alert('contrasenas coinciden!');
 		}
-		alert('nombre ' +nombre.value+',apellido' + apellido.value +',correo' + correo.value);
+			var nameJson = {"nombre" : nombre.value , "apellido" : apellido.value, "correo" : correo.value};
+
+			console.log(nameJson);
 	}
+
 
 </script>
 </body>
