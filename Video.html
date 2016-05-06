@@ -47,20 +47,21 @@
 		    <br>
 		    <!--Bloque de Categorias-->
 			<div class="list-group">
-			  <a href="#" class="list-group-item categ">Terror</a>
-			  <a href="#" class="list-group-item categ">Accion</a>
-			  <a href="#" class="list-group-item categ">Comedia</a>
-			  <a href="#" class="list-group-item categ">Aventura</a>
+			  <a href="#" class="list-group-item categ" onclick="buscarGenero('terror')">Terror</a>
+			  <a href="#" class="list-group-item categ" onclick="buscarGenero('accion')">Accion</a>
+			  <a href="#" class="list-group-item categ" onclick="buscarGenero('comedia')">Comedia</a>
+			  <a href="#" class="list-group-item categ" onclick="buscarGenero('aventura')">Aventura</a>
 			</div>
 		</div>
 		<div class="col-md-8 col-md-offset-1">
 			<!--Contenedor Principal de Tarjetas-->
-				<!--Bloque de Tarjetas-->
+				<div id="bloqueTarjetas">
+				<!--Bloque de Tarjetas-->		
 				<div class="row">
 						<div class="col-md-4">
-							<h4 class="tituloPelicula">Titulo Video</h4>
+							<h4 id="tituloPelicula0" class="tituloPelicula">Titulo Video</h4>
 							<div class="thumbnail">
-					      		<img class="imgPelicula" src="img/anime.jpg" alt="...">
+					      		<img onclick="cargarVideo(getElementById('tituloPelicula0'))" class="imgPelicula" src="img/anime.jpg" alt="...">
 				    		</div>
 					    	<div class="caption">
 					        	<p class="valor">
@@ -73,9 +74,9 @@
 					      	</div>
 						</div>
 						<div class="col-md-4">
-							<h4 class="tituloPelicula">Titulo Video</h4>
+							<h4 id="tituloPelicula1" class="tituloPelicula">Titulo Video</h4>
 							<div class="thumbnail">
-					      		<img class="imgPelicula" src="img/anime.jpg" alt="...">
+					      		<img onclick="cargarVideo(getElementById('tituloPelicula1'))" class="imgPelicula" src="img/anime.jpg" alt="...">
 				    		</div>
 					    	<div class="caption">
 					        	<p class="valor">
@@ -88,9 +89,9 @@
 					      	</div>
 						</div>
 						<div class="col-md-4">
-							<h4 class="tituloPelicula">Titulo Video</h4>
+							<h4 id="tituloPelicula2" class="tituloPelicula">Titulo Video</h4>
 							<div class="thumbnail">
-					      		<img class="imgPelicula" src="img/anime.jpg" alt="...">
+					      		<img onclick="cargarVideo(getElementById('tituloPelicula2'))" class="imgPelicula" src="img/anime.jpg" alt="...">
 				    		</div>
 					    	<div class="caption">
 					        	<p class="valor">
@@ -151,17 +152,17 @@
 					      	</div>
 						</div>
 				</div>
-			</div>
+				</div>
 		</div>
 		<!--Trailer de Video-->
-		<div hidden class="col-md-8 col-md-offset-1">
+		<div id="bloqueVideo" class="col-md-8 col-md-offset-1">
 			<article>
-				<video width="100%" controls="controls" preload="none" poster="img/gato.jpg">
-					<source src="toradora.mp4" type="video/mp4">
+				<video id="video" width="100%" controls="controls" preload="none" poster="img/gato.jpg">
+					<source src="toradora1.mp4" type="video/mp4">
 				</video>
 				<article id="descripcion">
 					<h4><strong>Descripcion</strong></h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac  neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum in tempus ut, vehicula eu diam. Pellentesque rhoncus aliquam mattis. Ut vulputate eros sed felis sodales nec vulputate justo hendrerit. Vivamus varius pretium ligula, a aliquam odio euismod sit amet. Quisque laoreet sem sit amet orci ullamcorper at ultricies metus viverra. Pellentesque arcu mauris, malesuada quis ornare accumsan, blandit sed diam.</p>
+					<p id="parrafoDescripcion" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac  neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum in tempus ut, vehicula eu diam. Pellentesque rhoncus aliquam mattis. Ut vulputate eros sed felis sodales nec vulputate justo hendrerit. Vivamus varius pretium ligula, a aliquam odio euismod sit amet. Quisque laoreet sem sit amet orci ullamcorper at ultricies metus viverra. Pellentesque arcu mauris, malesuada quis ornare accumsan, blandit sed diam.</p>
 				</article>
 			</article>	
 		</div>
@@ -176,56 +177,98 @@ var json = {
 			titulo: "titulo1",
 			genero: "terror",
 			imagen: "naruto1.jpg",
+			video: "toradora2.mp4",
+			descripcion: "Descripcion terror"
 		},{
 			titulo: "titulo2",
 			genero: "terror",
 			imagen: "naruto1.jpg",
+			video: "toradora2.mp4",
+			descripcion: "Descripcion terror"
 		},{
 			titulo: "titulo3",
 			genero: "terror",
 			imagen: "naruto1.jpg",
+			video: "toradora2.mp4",
+			descripcion: "Descripcion terror"
 		},{
 			titulo: "titulo4",
 			genero: "comedia",
 			imagen: "naruto2.jpg",
+			video: "toradora2.mp4",
+			descripcion: "Descripcion comedia"
 		},{
 			titulo: "titulo5",
 			genero: "comedia",
 			imagen: "naruto2.jpg",
+			video: "toradora2.mp4",
+			descripcion: "Descripcion comedia"
 		},{
 			titulo: "titulo6",
 			genero: "comedia",
 			imagen: "naruto2.jpg",
+			video: "toradora2.mp4",
+			descripcion: "Descripcion comedia"
 		},{
 			titulo: "titulo7",
 			genero: "accion",
 			imagen: "naruto3.jpg",
+			video: "toradora3.mp4",
+			descripcion: "Descripcion accion"
 		},{
 			titulo: "titulo8",
 			genero: "accion",
 			imagen: "naruto3.jpg",
+			video: "toradora3.mp4",
+			descripcion: "Descripcion accion"
 		},{
 			titulo: "titulo9",
 			genero: "accion",
 			imagen: "naruto3.jpg",
+			video: "toradora3.mp4",
+			descripcion: "Descripcion accion"
 		},{
 			titulo: "titulo10",
 			genero: "aventura",
 			imagen: "naruto4.jpg",
+			video: "toradora3.mp4",
+			descripcion: "Descripcion aventura"
 		},{
 			titulo: "titulo11",
 			genero: "aventura",
 			imagen: "naruto4.jpg",
+			video: "toradora3.mp4",
+			descripcion: "Descripcion aventura"
 		},{
 			titulo: "titulo12",
 			genero: "aventura",
 			imagen: "naruto4.jpg",
+			video: "toradora3.mp4",
+			descripcion: "Descripcion aventura"
 		}]
 };
 
 var botonBusqueda = document.getElementById("botonBusqueda");
 var textoBusqueda = document.getElementById("textoBusqueda");
+var bloqueTarjetas = document.getElementById("bloqueTarjetas");
+var bloqueVideo = document.getElementById("bloqueVideo");
+var video = document.getElementById("video");
+var parrafoDescripcion = document.getElementById("parrafoDescripcion");
+
 botonBusqueda.addEventListener("click",busqueda);
+bloqueTarjetas.style.display = "inline";
+bloqueVideo.style.display = "none";
+
+function cargarVideo(titulo){
+	console.log(titulo.innerHTML);
+	var pelicula = buscarPelicula(titulo.innerHTML);
+	console.log(pelicula);
+	bloqueTarjetas.style.display = "none";
+	bloqueVideo.style.display = "inline";
+	video.firstElementChild.src = pelicula.video
+	parrafoDescripcion.innerHTML = pelicula.descripcion 
+	video.load();
+}
 
 function busqueda(){
 	buscarPelicula(textoBusqueda.value);
@@ -237,8 +280,7 @@ function buscarPelicula(titulo){
 	for (var i = json.peliculas.length - 1; i >= 0; i--) {
 		if(json.peliculas[i].titulo == titulo){
 			busqueda = json.peliculas[i]
-			console.log(busqueda);
-			//return busqueda
+			return busqueda
 		}
 	}
 }
