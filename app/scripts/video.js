@@ -71,8 +71,50 @@ var json = {
 	imagen: "naruto4.jpg",
 	video: "toradora3.mp4",
 	descripcion: "Descripcion aventura"
+	},{
+	titulo: "titulo13",
+	genero: "terror",
+	imagen: "naruto1.jpg",
+	video: "toradora2.mp4",
+	descripcion: "Descripcion terror"
+	},{
+	titulo: "titulo14",
+	genero: "terror",
+	imagen: "naruto1.jpg",
+	video: "toradora2.mp4",
+	descripcion: "Descripcion terror"
+	},{
+	titulo: "titulo15",
+	genero: "terror",
+	imagen: "naruto1.jpg",
+	video: "toradora2.mp4",
+	descripcion: "Descripcion terror"
 	}]
 };
+
+var app = angular.module('video',[]);
+app.controller('videoController',function($scope){
+	$scope.busquedaGenero = function(genero){
+		var peliculas = buscarJson(genero);
+		$scope.peliculasBloque = [];
+		$scope.peliculasBloque.push(obtenerTarjetas(0,3,peliculas));
+		$scope.peliculasBloque.push(obtenerTarjetas(3,6,peliculas));
+		console.log($scope.peliculasBloque)
+	};
+	$scope.busquedaTexto = function(){
+		var pelicula = buscarPelicula(textoBusqueda.value);
+		console.log(pelicula);
+	};
+	$scope.cargarVideo = function(titulo){
+		var pelicula = buscarPelicula(titulo);
+		console.log(pelicula);
+		bloqueTarjetas.style.display = "none";
+		bloqueVideo.style.display = "inline";
+		video.firstElementChild.src = pelicula.video
+		parrafoDescripcion.innerHTML = pelicula.descripcion 
+		video.load();
+	};
+});
 
 var categorias = document.querySelectorAll(".categ")
 var tarjetas_titulo = document.querySelectorAll(".tituloPelicula");
@@ -85,7 +127,7 @@ var bloqueVideo = document.getElementById("bloqueVideo");
 var video = document.getElementById("video");
 var parrafoDescripcion = document.getElementById("parrafoDescripcion");
 
-botonBusqueda.addEventListener("click",busqueda);
+//botonBusqueda.addEventListener("click",busqueda);
 bloqueTarjetas.style.display = "inline";
 bloqueVideo.style.display = "none";
 
@@ -138,4 +180,30 @@ function buscarPelicula(titulo){
 			return busqueda
 		}
 	}
+}
+
+function cargarTarjetasAngular(peliculas){
+	console.log("Cargando Pelicuals Angular");
+	console.log(peliculas);
+	var peliculasBloque = [];
+	var peliculasFila = [];
+	console.log(peliculasFila)
+	for (var i = 0; i < peliculas.length; i++) {
+		peliculasFila.push(peliculas[i]);
+		if((i+1)%3 == 0){
+			console.log("Modulo" + (i+1));
+			console.log(peliculasFila.length);
+			console.log(peliculasFila);
+			peliculasBloque.push(peliculasFila);
+		}
+	}
+	return peliculasBloque;
+}
+
+function obtenerTarjetas(rangom,rangoM,peliculas){
+	var peliculasFila = [];
+	for (var i = rangom; i < rangoM; i++) {
+		peliculasFila.push(peliculas[i]);
+	}
+	return peliculasFila;
 }
