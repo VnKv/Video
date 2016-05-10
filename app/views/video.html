@@ -4,9 +4,10 @@
 	<link rel="stylesheet" type="text/css" href="../scripts/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../styles/video.css">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script src="../scripts/angular.min.js"></script>
 	<title></title>
 </head>
-<body>
+<body ng-app="video" ng-controller="videoController">
 <header>
 	<nav class="navbar navbar-static-top" role="navigation">
 		<div class="container">
@@ -41,58 +42,28 @@
 				<div class="input-group">
 			      <input id="textoBusqueda" type="text" class="form-control" placeholder="Buscar">
 			      <span class="input-group-btn">
-			        <button id="botonBusqueda"  class="btn" type="button"><span class="glyphicon glyphicon-search"></span></button>
+			        <button id="botonBusqueda" class="btn" type="button" ng-click="busquedaTexto()"><span class="glyphicon glyphicon-search"></span></button>
 			      </span>
 			    </div>
 			</form>
 		    <br>
 		    <!--Bloque de Categorias-->
-			<div class="list-group">
-			  <a href="#" class="list-group-item categ" onclick="buscarGenero('terror')">Terror</a>
-			  <a href="#" class="list-group-item categ" onclick="buscarGenero('accion')">Accion</a>
-			  <a href="#" class="list-group-item categ" onclick="buscarGenero('comedia')">Comedia</a>
-			  <a href="#" class="list-group-item categ" onclick="buscarGenero('aventura')">Aventura</a>
+			<div  class="list-group">
+			  <a href="#" class="list-group-item categ" ng-click="busquedaGenero('terror')">Terror</a>
+			  <a href="#" class="list-group-item categ" ng-click="busquedaGenero('accion')">Accion</a>
+			  <a href="#" class="list-group-item categ" ng-click="busquedaGenero('comedia')">Comedia</a>
+			  <a href="#" class="list-group-item categ" ng-click="busquedaGenero('aventura')">Aventura</a>
 			</div>
 		</div>
 		<div class="col-md-8 col-md-offset-1">
 			<!--Contenedor Principal de Tarjetas-->
-				<div id="bloqueTarjetas">
+			<div id="bloqueTarjetas">
 				<!--Bloque de Tarjetas-->		
-				<div class="row">
-						<div class="col-md-4">
-							<h4 id="tituloPelicula0" class="tituloPelicula">Titulo Video</h4>
+				<div ng-repeat="fila in peliculasBloque" class="row">
+						<div ng-repeat="tarjeta in fila"class="col-md-4  imgContenedor">
+							<h4 id="tituloPelicula0" class="tituloPelicula">{{tarjeta.titulo}}</h4>
 							<div class="thumbnail">
-					      		<img onclick="cargarVideo(getElementById('tituloPelicula0'))" class="imgPelicula" src="../images/anime.jpg" alt="...">
-				    		</div>
-					    	<div class="caption">
-					        	<p class="valor">
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-					       		</p>	        
-					      	</div>
-						</div>
-						<div class="col-md-4">
-							<h4 id="tituloPelicula1" class="tituloPelicula">Titulo Video</h4>
-							<div class="thumbnail">
-					      		<img onclick="cargarVideo(getElementById('tituloPelicula1'))" class="imgPelicula" src="../images/anime.jpg" alt="...">
-				    		</div>
-					    	<div class="caption">
-					        	<p class="valor">
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-					       		</p>	        
-					      	</div>
-						</div>
-						<div class="col-md-4">
-							<h4 id="tituloPelicula2" class="tituloPelicula">Titulo Video</h4>
-							<div class="thumbnail">
-					      		<img onclick="cargarVideo(getElementById('tituloPelicula2'))" class="imgPelicula" src="../images/anime.jpg" alt="...">
+					      		<img ng-click="cargarVideo(tarjeta.titulo)" class="imgPelicula" src="../images/{{tarjeta.imagen}}" alt="...">
 				    		</div>
 					    	<div class="caption">
 					        	<p class="valor">
@@ -105,55 +76,7 @@
 					      	</div>
 						</div>
 				</div>
-				<!--Bloque de Tarjetas-->
-				<div class="row">
-						<div class="col-md-4">
-							<h4 class="tituloPelicula">Titulo Video</h4>
-							<div class="thumbnail">
-					      		<img class="imgPelicula" src="../images/anime.jpg" alt="...">
-				    		</div>
-					    	<div class="caption">
-					        	<p class="valor">
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-					       		</p>	        
-					      	</div>
-						</div>
-						<div class="col-md-4">
-							<h4 class="tituloPelicula">Titulo Video</h4>
-							<div class="thumbnail">
-					      		<img class="imgPelicula" src="../images/anime.jpg" alt="...">
-				    		</div>
-					    	<div class="caption">
-					        	<p class="valor">
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-					       		</p>	        
-					      	</div>
-						</div>
-						<div class="col-md-4">
-							<h4 class="tituloPelicula">Titulo Video</h4>
-							<div class="thumbnail">
-					      		<img class="imgPelicula" src="../images/anime.jpg" alt="...">
-				    		</div>
-					    	<div class="caption">
-					        	<p class="valor">
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-					       		</p>	        
-					      	</div>
-						</div>
-				</div>
-				</div>
+			</div>
 		</div>
 		<!--Trailer de Video-->
 		<div id="bloqueVideo" class="col-md-8 col-md-offset-1">
