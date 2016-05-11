@@ -5,9 +5,11 @@
 	<link rel="stylesheet" type="text/css" href="../styles/video.css">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script src="../scripts/angular.min.js"></script>
+	<script src="../scripts/angular-route.min.js"></script>
 	<title></title>
 </head>
 <body ng-app="video" ng-controller="videoController">
+
 <header>
 	<nav class="navbar navbar-static-top" role="navigation">
 		<div class="container">
@@ -34,62 +36,31 @@
 		</div>
 	</nav>
 </header>
+
 <section class="main container">
 	<div class="row">
 		<div class="col-md-3">
 			<!--Formulario de Busqueda-->
 			<form>
 				<div class="input-group">
-			      <input id="textoBusqueda" type="text" class="form-control" placeholder="Buscar">
-			      <span class="input-group-btn">
-			        <button id="botonBusqueda" class="btn" type="button" ng-click="busquedaTexto()"><span class="glyphicon glyphicon-search"></span></button>
+			      <input ng-model="textoBusqueda" type="text" class="form-control" placeholder="Buscar">
+			      <span class="input-group-btn"><button id="botonBusqueda" class="btn" type="button" ng-click="busquedaTexto()"><span class="glyphicon glyphicon-search"></span></button>
 			      </span>
 			    </div>
 			</form>
 		    <br>
 		    <!--Bloque de Categorias-->
 			<div  class="list-group">
-			  <a href="#" class="list-group-item categ" ng-click="busquedaGenero('terror')">Terror</a>
-			  <a href="#" class="list-group-item categ" ng-click="busquedaGenero('accion')">Accion</a>
-			  <a href="#" class="list-group-item categ" ng-click="busquedaGenero('comedia')">Comedia</a>
-			  <a href="#" class="list-group-item categ" ng-click="busquedaGenero('aventura')">Aventura</a>
+			  <a href="" class="list-group-item categ" ng-click="busquedaGenero('terror')">Terror</a>
+			  <a href="" class="list-group-item categ" ng-click="busquedaGenero('accion')">Accion</a>
+			  <a href="" class="list-group-item categ" ng-click="busquedaGenero('comedia')">Comedia</a>
+			  <a href="" class="list-group-item categ" ng-click="busquedaGenero('aventura')">Aventura</a>
 			</div>
 		</div>
-		<div class="col-md-8 col-md-offset-1">
-			<!--Contenedor Principal de Tarjetas-->
-			<div id="bloqueTarjetas">
-				<!--Bloque de Tarjetas-->		
-				<div ng-repeat="fila in peliculasBloque" class="row">
-						<div ng-repeat="tarjeta in fila"class="col-md-4  imgContenedor">
-							<h4 id="tituloPelicula0" class="tituloPelicula">{{tarjeta.titulo}}</h4>
-							<div class="thumbnail">
-					      		<img ng-click="cargarVideo(tarjeta.titulo)" class="imgPelicula" src="../images/{{tarjeta.imagen}}" alt="...">
-				    		</div>
-					    	<div class="caption">
-					        	<p class="valor">
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-						        	<span class="glyphicon glyphicon-heart"></span>
-					       		</p>	        
-					      	</div>
-						</div>
-				</div>
-			</div>
+		<!--Tarjetas de busqueda por genero y Reproduccion de Video-->
+		<div ng-view class="col-md-8 col-md-offset-1">		
 		</div>
-		<!--Trailer de Video-->
-		<div id="bloqueVideo" class="col-md-8 col-md-offset-1">
-			<article>
-				<video id="video" width="100%" controls="controls" preload="none" poster="../images/gato.jpg">
-					<source src="toradora1.mp4" type="video/mp4">
-				</video>
-				<article id="descripcion">
-					<h4><strong>Descripcion</strong></h4>
-					<p id="parrafoDescripcion" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac  neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum in tempus ut, vehicula eu diam. Pellentesque rhoncus aliquam mattis. Ut vulputate eros sed felis sodales nec vulputate justo hendrerit. Vivamus varius pretium ligula, a aliquam odio euismod sit amet. Quisque laoreet sem sit amet orci ullamcorper at ultricies metus viverra. Pellentesque arcu mauris, malesuada quis ornare accumsan, blandit sed diam.</p>
-				</article>
-			</article>	
-		</div>
+		
 	</div>
 </section>
 

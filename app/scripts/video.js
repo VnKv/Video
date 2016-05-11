@@ -91,50 +91,33 @@ var json = {
 	descripcion: "Descripcion terror"
 	}]
 };
-
-var app = angular.module('video',[]);
-app.controller('videoController',function($scope){
+var app = angular.module('video',['ngRoute']);
+app.config(function($routeProvider){
+	$routeProvider.when('/busquedaVideo',{templateUrl:'busquedaVideo.html',controller:'busquedaVideoController'})
+				  .when('/reproduccionVideo/:src/:descripcion',{templateUrl:'reproduccionVideo.html',controller:'reproduccionVideoController'})
+});
+app.controller('videoController',function($scope,$location){
 	$scope.busquedaGenero = function(genero){
 		var peliculas = buscarJson(genero);
 		$scope.peliculasBloque = [];
 		$scope.peliculasBloque.push(obtenerTarjetas(0,3,peliculas));
 		$scope.peliculasBloque.push(obtenerTarjetas(3,6,peliculas));
-		console.log($scope.peliculasBloque)
+		$location.path('/busquedaVideo');
 	};
 	$scope.busquedaTexto = function(){
-		var pelicula = buscarPelicula(textoBusqueda.value);
+		var pelicula = buscarPelicula($scope.textoBusqueda);
 		console.log(pelicula);
-	};
-	$scope.cargarVideo = function(titulo){
-		var pelicula = buscarPelicula(titulo);
-		console.log(pelicula);
-		bloqueTarjetas.style.display = "none";
-		bloqueVideo.style.display = "inline";
-		video.firstElementChild.src = pelicula.video
-		parrafoDescripcion.innerHTML = pelicula.descripcion 
-		video.load();
+	};	
+});
+app.controller('busquedaVideoController',function($scope,$location){
+	$scope.cargarVideo = function(tarjeta){
+		$location.path('/reproduccionVideo/'+tarjeta.video+'/'+tarjeta.descripcion);
 	};
 });
-
-var categorias = document.querySelectorAll(".categ")
-var tarjetas_titulo = document.querySelectorAll(".tituloPelicula");
-var tarjetas_img = document.querySelectorAll(".imgPelicula");
-
-var botonBusqueda = document.getElementById("botonBusqueda");
-var textoBusqueda = document.getElementById("textoBusqueda");
-var bloqueTarjetas = document.getElementById("bloqueTarjetas");
-var bloqueVideo = document.getElementById("bloqueVideo");
-var video = document.getElementById("video");
-var parrafoDescripcion = document.getElementById("parrafoDescripcion");
-
-//botonBusqueda.addEventListener("click",busqueda);
-bloqueTarjetas.style.display = "inline";
-bloqueVideo.style.display = "none";
-
-function buscarGenero(genero){
-	var peliculas = buscarJson(genero);
-	cargarTarjetas(peliculas);
-}
+app.controller('reproduccionVideoController',function($scope,$routeParams){
+	$scope.src = $routeParams.src;
+	$scope.descripcion = $routeParams.descripcion;
+});
 
 function buscarJson(genero){
 	var conjuntoGenero = [];
@@ -144,31 +127,6 @@ function buscarJson(genero){
 		}
 	}
 	return conjuntoGenero;
-}
-
-function cargarTarjetas(peliculas){
-	console.log("CargandoPeliculas")
-	for (var i = peliculas.length - 1; i >= 0; i--) {
-		tarjetas_titulo[i].innerHTML = "";
-		tarjetas_titulo[i].innerHTML = peliculas[i].titulo;
-		tarjetas_img[i].src= "";
-		tarjetas_img[i].src = "../images/" + peliculas[i].imagen;
-	}
-}
-
-function cargarVideo(titulo){
-	console.log(titulo.innerHTML);
-	var pelicula = buscarPelicula(titulo.innerHTML);
-	console.log(pelicula);
-	bloqueTarjetas.style.display = "none";
-	bloqueVideo.style.display = "inline";
-	video.firstElementChild.src = pelicula.video
-	parrafoDescripcion.innerHTML = pelicula.descripcion 
-	video.load();
-}
-
-function busqueda(){
-	buscarPelicula(textoBusqueda.value);
 }
 
 function buscarPelicula(titulo){
