@@ -96,7 +96,8 @@ app.controller('peliculaController', function($scope, $location){
 
 	$scope.login = function(){
 		if($scope.usuario.name === $scope.usuarioValidado.name && $scope.usuario.pass === $scope.usuarioValidado.pass){
-			$location.url("C:\Vane\Universidad\Septimo Semestre\Certificacion_III\Certificacion3\app\views");
+			//$location.url("C:\Vane\Universidad\Septimo Semestre\Certificacion_III\Certificacion3\app\views");
+			$location.url.href = "views/video.html";
 			console.log("Bien");
 			logeado = true;
 		}
