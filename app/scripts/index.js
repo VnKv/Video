@@ -78,14 +78,13 @@ var json = {
 var app = angular.module("pelicula",[]);
 
 
-app.controller('peliculaController', function($scope, $location){
+app.controller('peliculaController', function($scope){
 	$scope.buscarGenero = function(genero){
 		var peliculas = buscarJson(genero);
 		$scope.peliculasBloque=[];
 		$scope.peliculasBloque = (obtenerTarjetas(0,3,peliculas));
 		console.log($scope.peliculasBloque);
 	};
-
 	$scope.usuarioValidado= {};
 	$scope.usuarioValidado.name ="kv.123@gmail.com";
 	$scope.usuarioValidado.pass = "123";
@@ -109,16 +108,6 @@ app.controller('peliculaController', function($scope, $location){
 
 });
 
-var categorias = document.querySelectorAll(".categ")
-var tarjetas_titulo = document.querySelectorAll(".tituloPelicula");
-var tarjetas_img = document.querySelectorAll(".imgPelicula");
-
-
-function buscarGenero(genero){
-	var peliculas = buscarJson(genero);
-	cargarTarjetas(peliculas);
-}
-
 function buscarJson(genero){
 	var conjuntoGenero = [];
 	for (var i = json.peliculas.length - 1; i >= 0; i--) {
@@ -129,15 +118,6 @@ function buscarJson(genero){
 	return conjuntoGenero;
 }
 
-function cargarTarjetas(peliculas){
-	console.log("CargandoPeliculas Angular")
-	for (var i = peliculas.length - 1; i >= 0; i--) {
-		tarjetas_titulo[i].innerHTML = "";
-		tarjetas_titulo[i].innerHTML = peliculas[i].titulo;
-		tarjetas_img[i].src= "";
-		tarjetas_img[i].src = "images/" + peliculas[i].imagen;
-	}
-}
 function obtenerTarjetas(rangom, rangoM, peliculas){
 	var peliculasFila = [];
 	for (var i = rangom ; i < rangoM; i++) {

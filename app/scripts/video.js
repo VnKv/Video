@@ -103,6 +103,8 @@ app.controller('videoController',function($scope,$location){
 		$scope.peliculasBloque.push(obtenerTarjetas(0,3,peliculas));
 		$scope.peliculasBloque.push(obtenerTarjetas(3,6,peliculas));
 		$location.path('/busquedaVideo');
+		console.log($scope.peliculasBloque)
+		console.log('Buscando Video')
 	};
 	$scope.busquedaTexto = function(){
 		var pelicula = buscarPelicula($scope.textoBusqueda);
