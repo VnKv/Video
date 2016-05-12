@@ -75,7 +75,12 @@ var json = {
 	}]
 };
 
-var app = angular.module('pelicula',[]);
+var app = angular.module("pelicula",['ngRoute']);
+
+app.config(function($routeProvider){
+	$routeProvider.when('/login',{templateUrl:'video.html',controller:'loginController'})
+});
+
 app.controller('peliculaController', function($scope){
 	$scope.buscarGenero = function(genero){
 		var peliculas = buscarJson(genero);
@@ -84,28 +89,47 @@ app.controller('peliculaController', function($scope){
 		console.log($scope.peliculasBloque);
 	};
 
+	$scope.usuarioValidado= {};
+	$scope.usuarioValidado.name ="kv.123@gmail.com";
+	$scope.usuarioValidado.pass = "123";
+	$scope.usuario= {};
+	$scope.usuario.name ="";
+	$scope.usuario.pass = "";
+	$scope.login = function(){
+		if($scope.usuario.name === $scope.usuarioValidado.name && $scope.usuario.pass === $scope.usuarioValidado.pass){
+			//$location.path('/login');
+			console.log("Bien");
+		}
+		else{
+			$scope.usuario.name = "Error";
+		}
+		
+	}	
+
 });
 
-var buttonReg = document.getElementById('inicioSesion');
-var email = document.getElementById('inputEmail');
-var password = document.getElementById('inputContrasena');
+/*app.controller('loginController', function($scope,$location){
+	$scope.usuarioValidado= {};
+	$scope.usuarioValidado.name ="kv.123@gmail.com";
+	$scope.usuarioValidado.pass = "123";
+	$scope.usuario= {};
+	$scope.usuario.name ="";
+	$scope.usuario.pass = "";
+	$scope.login = function(){
+		if($scope.usuario.name === $scope.usuarioValidado.name && $scope.usuario.pass === $scope.usuarioValidado.pass){
+			$location.path('/login');
+		}
+		else{
+			$scope.usuario.name = "Error";
+		}
+		
+	}	
+});*/
 
 var categorias = document.querySelectorAll(".categ")
 var tarjetas_titulo = document.querySelectorAll(".tituloPelicula");
 var tarjetas_img = document.querySelectorAll(".imgPelicula");
 
-
-
-buttonReg.onclick = function(){
-	if(email.value == "kv.123@gmail.com" && password.value =="123"){
-		console.log("views/video.html");
-		location.href="views/video.html"; 
-		return false;
-	}
-	else{
-		alert('Correo electronico o Contraseña invalida');
-	}
-}
 
 function buscarGenero(genero){
 	var peliculas = buscarJson(genero);

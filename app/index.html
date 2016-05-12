@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/index.css">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+	<script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
 	<title>Video</title>
 </head>
 <body ng-app="pelicula" ng-controller="peliculaController">
@@ -48,13 +49,13 @@
 				<form>
 				  <div class="form-group">
 				    <label for="inputEmail">Email</label>
-				    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+				    <input type="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="usuario.name">
 				  </div>
 				  <div class="form-group">
 				    <label for="inputContrasena">Contraseña</label>
-				    <input type="password" class="form-control" id="inputContrasena" placeholder="Contraseña">
+				    <input type="password" class="form-control" id="inputContrasena" placeholder="Contraseña" ng-model="usuario.pass">
 				  </div>
-				  <button id="inicioSesion" type="submit" class="btn">Iniciar Sesion</button>
+				  <button id="inicioSesion" class="btn" type="button" ng-click="login()">Iniciar Sesion</button>
 				</form>
 				<br>
 				<br>
