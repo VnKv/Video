@@ -103,15 +103,15 @@ app.controller('peliculaController', function($scope, $location){
 		}
 		else{
 			$scope.usuario.name = "Error";
-		}
-		
+		}	
 	}	
+	$scope.nuevoUsuario = function(){
+		//$location.url.href = "views/Reg.html";
+		$scope.registro = "views/Reg.html";
+	}
 
 });
 
-var categorias = document.querySelectorAll(".categ")
-var tarjetas_titulo = document.querySelectorAll(".tituloPelicula");
-var tarjetas_img = document.querySelectorAll(".imgPelicula");
 
 
 function buscarGenero(genero){
