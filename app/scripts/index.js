@@ -75,13 +75,10 @@ var json = {
 	}]
 };
 
-var app = angular.module("pelicula",['ngRoute']);
+var app = angular.module("pelicula",[]);
 
-app.config(function($routeProvider){
-	$routeProvider.when('/login',{templateUrl:'video.html',controller:'loginController'})
-});
 
-app.controller('peliculaController', function($scope){
+app.controller('peliculaController', function($scope, $location){
 	$scope.buscarGenero = function(genero){
 		var peliculas = buscarJson(genero);
 		$scope.peliculasBloque=[];
@@ -95,10 +92,13 @@ app.controller('peliculaController', function($scope){
 	$scope.usuario= {};
 	$scope.usuario.name ="";
 	$scope.usuario.pass = "";
+	var logeado = "";
+
 	$scope.login = function(){
 		if($scope.usuario.name === $scope.usuarioValidado.name && $scope.usuario.pass === $scope.usuarioValidado.pass){
-			//$location.path('/login');
+			$location.url("C:\Vane\Universidad\Septimo Semestre\Certificacion_III\Certificacion3\app\views");
 			console.log("Bien");
+			logeado = true;
 		}
 		else{
 			$scope.usuario.name = "Error";
@@ -107,24 +107,6 @@ app.controller('peliculaController', function($scope){
 	}	
 
 });
-
-/*app.controller('loginController', function($scope,$location){
-	$scope.usuarioValidado= {};
-	$scope.usuarioValidado.name ="kv.123@gmail.com";
-	$scope.usuarioValidado.pass = "123";
-	$scope.usuario= {};
-	$scope.usuario.name ="";
-	$scope.usuario.pass = "";
-	$scope.login = function(){
-		if($scope.usuario.name === $scope.usuarioValidado.name && $scope.usuario.pass === $scope.usuarioValidado.pass){
-			$location.path('/login');
-		}
-		else{
-			$scope.usuario.name = "Error";
-		}
-		
-	}	
-});*/
 
 var categorias = document.querySelectorAll(".categ")
 var tarjetas_titulo = document.querySelectorAll(".tituloPelicula");
