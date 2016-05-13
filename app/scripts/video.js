@@ -1,94 +1,148 @@
 var json = {
 	peliculas : [{
-	titulo: "titulo1",
+	titulo: "El Viaje de Chihiro 1",
 	genero: "terror",
-	imagen: "naruto1.jpg",
+	imagen: "chihiro.jpg",
 	video: "toradora2.mp4",
 	descripcion: "Descripcion terror"
 	},{
-	titulo: "titulo2",
+	titulo: "El Viaje de Chihiro 2",
 	genero: "terror",
-	imagen: "naruto1.jpg",
+	imagen: "chihiro.jpg",
 	video: "toradora2.mp4",
 	descripcion: "Descripcion terror"
 	},{
-	titulo: "titulo3",
+	titulo: "El Viaje de Chihiro 3",
 	genero: "terror",
-	imagen: "naruto1.jpg",
+	imagen: "chihiro.jpg",
 	video: "toradora2.mp4",
 	descripcion: "Descripcion terror"
 	},{
-	titulo: "titulo4",
+	titulo: "FullMetal Alchemist 4",
 	genero: "comedia",
-	imagen: "naruto2.jpg",
+	imagen: "fullmetal.jpg",
 	video: "toradora2.mp4",
 	descripcion: "Descripcion comedia"
 	},{
-	titulo: "titulo5",
+	titulo: "FullMetal Alchemist 5",
 	genero: "comedia",
-	imagen: "naruto2.jpg",
+	imagen: "fullmetal.jpg",
 	video: "toradora2.mp4",
 	descripcion: "Descripcion comedia"
 	},{
-	titulo: "titulo6",
+	titulo: "FullMetal Alchemist 6",
 	genero: "comedia",
-	imagen: "naruto2.jpg",
+	imagen: "fullmetal.jpg",
 	video: "toradora2.mp4",
 	descripcion: "Descripcion comedia"
 	},{
-	titulo: "titulo7",
+	titulo: "Kyoukai no Kanata 7",
 	genero: "accion",
-	imagen: "naruto3.jpg",
+	imagen: "kyoukai.jpg",
 	video: "toradora3.mp4",
 	descripcion: "Descripcion accion"
 	},{
-	titulo: "titulo8",
+	titulo: "Kyoukai no Kanata 8",
 	genero: "accion",
-	imagen: "naruto3.jpg",
+	imagen: "kyoukai.jpg",
 	video: "toradora3.mp4",
 	descripcion: "Descripcion accion"
 	},{
-	titulo: "titulo9",
+	titulo: "Kyoukai no Kanata 9",
 	genero: "accion",
-	imagen: "naruto3.jpg",
+	imagen: "kyoukai.jpg",
 	video: "toradora3.mp4",
 	descripcion: "Descripcion accion"
 	},{
-	titulo: "titulo10",
+	titulo: "Naruto 10",
 	genero: "aventura",
-	imagen: "naruto4.jpg",
+	imagen: "naruto1.jpg",
 	video: "toradora3.mp4",
 	descripcion: "Descripcion aventura"
 	},{
-	titulo: "titulo11",
+	titulo: "Naruto 11",
 	genero: "aventura",
-	imagen: "naruto4.jpg",
+	imagen: "naruto1.jpg",
 	video: "toradora3.mp4",
 	descripcion: "Descripcion aventura"
 	},{
-	titulo: "titulo12",
+	titulo: "Naruto 12",
 	genero: "aventura",
-	imagen: "naruto4.jpg",
+	imagen: "naruto1.jpg",
 	video: "toradora3.mp4",
 	descripcion: "Descripcion aventura"
 	},{
-	titulo: "titulo13",
+	titulo: "El Viaje de Chihiro 13",
 	genero: "terror",
-	imagen: "naruto1.jpg",
+	imagen: "chihiro.jpg",
 	video: "toradora2.mp4",
 	descripcion: "Descripcion terror"
 	},{
-	titulo: "titulo14",
+	titulo: "El Viaje de Chihiro 14",
 	genero: "terror",
-	imagen: "naruto1.jpg",
+	imagen: "chihiro.jpg",
 	video: "toradora2.mp4",
 	descripcion: "Descripcion terror"
 	},{
-	titulo: "titulo15",
+	titulo: "El Viaje de Chihiro 15",
 	genero: "terror",
-	imagen: "naruto1.jpg",
+	imagen: "chihiro.jpg",
 	video: "toradora2.mp4",
 	descripcion: "Descripcion terror"
+	},{
+	titulo: "FullMetal Alchemist 16",
+	genero: "comedia",
+	imagen: "fullmetal.jpg",
+	video: "toradora2.mp4",
+	descripcion: "Descripcion comedia"
+	},{
+	titulo: "FullMetal Alchemist 17",
+	genero: "comedia",
+	imagen: "fullmetal.jpg",
+	video: "toradora2.mp4",
+	descripcion: "Descripcion comedia"
+	},{
+	titulo: "FullMetal Alchemist 18",
+	genero: "comedia",
+	imagen: "fullmetal.jpg",
+	video: "toradora2.mp4",
+	descripcion: "Descripcion comedia"
+	},{
+	titulo: "Kyoukai no Kanata 19",
+	genero: "accion",
+	imagen: "kyoukai.jpg",
+	video: "toradora3.mp4",
+	descripcion: "Descripcion accion"
+	},{
+	titulo: "Kyoukai no Kanata 20",
+	genero: "accion",
+	imagen: "kyoukai.jpg",
+	video: "toradora3.mp4",
+	descripcion: "Descripcion accion"
+	},{
+	titulo: "Kyoukai no Kanata 21",
+	genero: "accion",
+	imagen: "kyoukai.jpg",
+	video: "toradora3.mp4",
+	descripcion: "Descripcion accion"
+	},{
+	titulo: "Naruto 22",
+	genero: "aventura",
+	imagen: "naruto1.jpg",
+	video: "toradora3.mp4",
+	descripcion: "Descripcion aventura"
+	},{
+	titulo: "Naruto 23",
+	genero: "aventura",
+	imagen: "naruto1.jpg",
+	video: "toradora3.mp4",
+	descripcion: "Descripcion aventura"
+	},{
+	titulo: "Naruto 24",
+	genero: "aventura",
+	imagen: "naruto1.jpg",
+	video: "toradora3.mp4",
+	descripcion: "Descripcion aventura"
 	}]
 };
 var app = angular.module('video',['ngRoute']);

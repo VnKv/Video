@@ -8,7 +8,8 @@
 	<script src="scripts/angular-route.min.js"></script>
 	<title>Video</title>
 </head>
-<body ng-app="pelicula" ng-controller="peliculaController">
+<body ng-app="index" ng-controller="indexController">
+
 <header>
 	<nav class="navbar navbar-static-top" role="navigation">
 		<div class="container">
@@ -24,38 +25,35 @@
 			<!--Menu de Navegacion-->
 			<div class="collapse navbar-collapse" id="navegation-kv">
 				<ul class="nav navbar-nav">
-					<li class="active"><a class="menu" href="">Inicio1</a></li>
-					<li><a class="menu" href="">Inicio2</a></li>
-					<li><a class="menu" href="">Inicio3</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li class="right" ng-click="registroModal()"><a class="menu" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">CrearCuenta</a></li>
+					<li class="right"><a class="menu" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#registro">CrearCuenta</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 </header>
-<!--Seccion Principal-->
-<section class="main container">	
-	<!--Formulario Inicio de Sesion-->
+
+<section class="main container">
+
 	<div class="container">
 		<div  id="autentificacion" class="row">
 			<div  class="col-md-4 col-md-offset-8">
 				<br>
 				<br>
 				<br>
-				<br>	
-				<form>
-				  <div class="form-group">
-				    <label for="inputEmail">Email</label>
-				    <input type="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="usuario.name">
-				  </div>
-				  <div class="form-group">
-				    <label for="inputContrasena">Contraseña</label>
-				    <input type="password" class="form-control" id="inputContrasena" placeholder="Contraseña" ng-model="usuario.pass">
-				  </div>
-				  <a href="views/video.html" ng-click="login()">Login</a>
-				</form>
+				<br>
+				<div>
+					<div class="form-group">
+					    <label for="inputEmail">Email</label>
+					    <input type="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="correo">
+				    </div>
+				    <div class="form-group">
+					    <label for="inputContrasena">Contraseña</label>
+					    <input type="password" class="form-control" id="inputContrasena" placeholder="Contraseña" ng-model="contrasena">
+				    </div>
+				    <button class="btn btn-primary" ng-click="iniciarSesion()">Iniciar Sesion</button>
+				</div>
 				<br>
 				<br>
 				<br>
@@ -63,47 +61,49 @@
 			</div>
 		</div>
 	</div>
+
 	<br>
-	<!--Barra de Categorias-->
+
 	<div id="categorias" class="container">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
-					<ul class="nav nav-pills">
-						<li role="presentation"><a class="btn categ" ng-click="buscarGenero('terror')" role="button">Terror</a></li>
-						<li role="presentation"><a class="btn categ" ng-click="buscarGenero('accion')" role="button">Accion</a></li>
-						<li role="presentation"><a class="btn categ" ng-click="buscarGenero('aventura')" role="button">Aventura</a></li>
-						<li role="presentation"><a class="btn categ" ng-click="buscarGenero('comedia')" role="button">Comedia</a></li>
-					</ul>
+				<ul class="nav nav-pills">
+					<li role="presentation"><a class="btn categ" ng-click="buscarGenero('terror')" role="button">Terror</a></li>
+					<li role="presentation"><a class="btn categ" ng-click="buscarGenero('accion')" role="button">Accion</a></li>
+					<li role="presentation"><a class="btn categ" ng-click="buscarGenero('aventura')" role="button">Aventura</a></li>
+					<li role="presentation"><a class="btn categ" ng-click="buscarGenero('comedia')" role="button">Comedia</a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
+
 	<br>
 	<br>
+
 	<div class="row">
-			<div class="col-md-8 col-md-offset-2">
-				<div class="row">
-					<!--Tarjeta Individual de Video-->
-					<div class="col-md-4" ng-repeat="pelicula in peliculasBloque">
-						<h4 class="tituloPelicula">{{pelicula.titulo}}</h4>
-						<div class="thumbnail">
-					      	<img class="imgPelicula" src="images/{{pelicula.imagen}}" alt="...">
-				    	</div>
-				    	<div class="caption">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="row">
+				<div class="col-md-4" ng-repeat="pelicula in peliculasBloque">
+					<h4 class="tituloPelicula">{{pelicula.titulo}}</h4>
+					<div class="thumbnail">
+				      	<img class="imgPelicula" src="images/{{pelicula.imagen}}" alt="...">
+			    	</div>
+			    	<div class="caption">
 				        <p class="valor">
-				        	<span class="glyphicon glyphicon-heart"></span>
-				        	<span class="glyphicon glyphicon-heart"></span>
-				        	<span class="glyphicon glyphicon-heart"></span>
-				        	<span class="glyphicon glyphicon-heart"></span>
-				        	<span class="glyphicon glyphicon-heart"></span>
+				        	<span class="glyphicon glyphicon-star-empty"></span>
+				        	<span class="glyphicon glyphicon-star-empty"></span>
+				        	<span class="glyphicon glyphicon-star-empty"></span>
+				        	<span class="glyphicon glyphicon-star-empty"></span>
+				        	<span class="glyphicon glyphicon-star-empty"></span>
 				        </p>	        
-				      </div>
-					</div>
+			      	</div>
 				</div>
-		    </div>
+			</div>
+	    </div>
 	</div>
 </section>
 
-<div id="myModal" class="modal fade" role="dialog">
+<div id="registro" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
@@ -113,27 +113,19 @@
       </div>
       <div class="modal-body">
 			<div class="form-group">
-			    <label for="nombre">Nombre</label>
-			    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
-			</div>
-			<div class="form-group">
-			    <label for="apellido">Apellido</label>
-			    <input type="text" class="form-control" id="apellido" placeholder="Apellido">
-			</div>
-			<div class="form-group">
 			    <label for="email">Correo Electronico</label>
-			    <input type="email" class="form-control" id="email" placeholder="Email">
+			    <input type="email" class="form-control" id="email" ng-model="registroCorreo" placeholder="Email">
 			 </div>
 			<div class="form-group">
 			    <label for="password">Contraseña</label>
-			    <input type="password" class="form-control" id="password" placeholder="Contraseña">
+			    <input type="password" class="form-control" id="password" ng-model="registroContrasenaP" placeholder="Contraseña">
 			</div>
 			<div class="form-group">
 			    <label for="password1">Verificar Contraseña</label>
-			    <input type="password" class="form-control" id="password1" placeholder="Contraseña">
+			    <input type="password" class="form-control" id="password1" ng-model="registroContrasenaV" placeholder="Contraseña">
 			</div>
 			<div class="form-group">
-				<button type="btn btn-success">Registro</button>
+				<button type="btn" ng-click="registrar()">Registro</button>
 			</div>
       </div>
     </div>
