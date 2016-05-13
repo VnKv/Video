@@ -1,4 +1,3 @@
-
 var json = {
 	peliculas : [{
 	titulo: "titulo1",
@@ -74,38 +73,30 @@ var json = {
 	descripcion: "Descripcion aventura"
 	}]
 };
+var usuario = {
+	correo:"e@g.com",
+	contrasena:"asd"
+}
 
-var app = angular.module("pelicula",[]);
+var app = angular.module("index",[]);
 
-
-app.controller('peliculaController', function($scope){
+app.controller('indexController', function($scope,$location,$window){
 	$scope.buscarGenero = function(genero){
 		var peliculas = buscarJson(genero);
-		$scope.peliculasBloque=[];
+		$scope.peliculasBloque = [];
 		$scope.peliculasBloque = (obtenerTarjetas(0,3,peliculas));
 		console.log($scope.peliculasBloque);
-	};
-	$scope.usuarioValidado= {};
-	$scope.usuarioValidado.name ="kv.123@gmail.com";
-	$scope.usuarioValidado.pass = "123";
-	$scope.usuario= {};
-	$scope.usuario.name ="";
-	$scope.usuario.pass = "";
-	var logeado = "";
-
-	$scope.login = function(){
-		if($scope.usuario.name === $scope.usuarioValidado.name && $scope.usuario.pass === $scope.usuarioValidado.pass){
-			//$location.url("C:\Vane\Universidad\Septimo Semestre\Certificacion_III\Certificacion3\app\views");
-			$location.url.href = "views/video.html";
-			console.log("Bien");
-			logeado = true;
-		}
-		else{
-			$scope.usuario.name = "Error";
-		}
 		
-	}	
-
+	};
+	$scope.iniciarSesion = function(){
+		if($scope.correo == usuario.correo && $scope.contrasena == usuario.contrasena){
+			console.log($scope.correo);
+			console.log($scope.contrasena);
+			location.href='views/video.html';
+		}else{
+			alert('correo o contraseña incorrecta');
+		}
+	};
 });
 
 function buscarJson(genero){
