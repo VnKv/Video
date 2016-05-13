@@ -1,74 +1,146 @@
 var json = {
 	peliculas : [{
-	titulo: "titulo1",
+	titulo: "El Viaje de Chihiro 1",
 	genero: "terror",
-	imagen: "naruto1.jpg",
+	imagen: "chihiro.jpg",
 	video: "toradora2.mp4",
 	descripcion: "Descripcion terror"
 	},{
-	titulo: "titulo2",
+	titulo: "El Viaje de Chihiro 2",
 	genero: "terror",
-	imagen: "naruto1.jpg",
+	imagen: "chihiro.jpg",
 	video: "toradora2.mp4",
 	descripcion: "Descripcion terror"
 	},{
-	titulo: "titulo3",
+	titulo: "El Viaje de Chihiro 3",
 	genero: "terror",
-	imagen: "naruto1.jpg",
+	imagen: "chihiro.jpg",
 	video: "toradora2.mp4",
 	descripcion: "Descripcion terror"
 	},{
-	titulo: "titulo4",
+	titulo: "FullMetal Alchemist 4",
 	genero: "comedia",
-	imagen: "naruto2.jpg",
+	imagen: "fullmetal.jpg",
 	video: "toradora2.mp4",
 	descripcion: "Descripcion comedia"
 	},{
-	titulo: "titulo5",
+	titulo: "FullMetal Alchemist 5",
 	genero: "comedia",
-	imagen: "naruto2.jpg",
+	imagen: "fullmetal.jpg",
 	video: "toradora2.mp4",
 	descripcion: "Descripcion comedia"
 	},{
-	titulo: "titulo6",
+	titulo: "FullMetal Alchemist 6",
 	genero: "comedia",
-	imagen: "naruto2.jpg",
+	imagen: "fullmetal.jpg",
 	video: "toradora2.mp4",
 	descripcion: "Descripcion comedia"
 	},{
-	titulo: "titulo7",
+	titulo: "Kyoukai no Kanata 7",
 	genero: "accion",
-	imagen: "naruto3.jpg",
+	imagen: "kyoukai.jpg",
 	video: "toradora3.mp4",
 	descripcion: "Descripcion accion"
 	},{
-	titulo: "titulo8",
+	titulo: "Kyoukai no Kanata 8",
 	genero: "accion",
-	imagen: "naruto3.jpg",
+	imagen: "kyoukai.jpg",
 	video: "toradora3.mp4",
 	descripcion: "Descripcion accion"
 	},{
-	titulo: "titulo9",
+	titulo: "Kyoukai no Kanata 9",
 	genero: "accion",
-	imagen: "naruto3.jpg",
+	imagen: "kyoukai.jpg",
 	video: "toradora3.mp4",
 	descripcion: "Descripcion accion"
 	},{
-	titulo: "titulo10",
+	titulo: "Naruto 10",
 	genero: "aventura",
-	imagen: "naruto4.jpg",
+	imagen: "naruto1.jpg",
 	video: "toradora3.mp4",
 	descripcion: "Descripcion aventura"
 	},{
-	titulo: "titulo11",
+	titulo: "Naruto 11",
 	genero: "aventura",
-	imagen: "naruto4.jpg",
+	imagen: "naruto1.jpg",
 	video: "toradora3.mp4",
 	descripcion: "Descripcion aventura"
 	},{
-	titulo: "titulo12",
+	titulo: "Naruto 12",
 	genero: "aventura",
-	imagen: "naruto4.jpg",
+	imagen: "naruto1.jpg",
+	video: "toradora3.mp4",
+	descripcion: "Descripcion aventura"
+	},{
+	titulo: "El Viaje de Chihiro 13",
+	genero: "terror",
+	imagen: "chihiro.jpg",
+	video: "toradora2.mp4",
+	descripcion: "Descripcion terror"
+	},{
+	titulo: "El Viaje de Chihiro 14",
+	genero: "terror",
+	imagen: "chihiro.jpg",
+	video: "toradora2.mp4",
+	descripcion: "Descripcion terror"
+	},{
+	titulo: "El Viaje de Chihiro 15",
+	genero: "terror",
+	imagen: "chihiro.jpg",
+	video: "toradora2.mp4",
+	descripcion: "Descripcion terror"
+	},{
+	titulo: "FullMetal Alchemist 16",
+	genero: "comedia",
+	imagen: "fullmetal.jpg",
+	video: "toradora2.mp4",
+	descripcion: "Descripcion comedia"
+	},{
+	titulo: "FullMetal Alchemist 17",
+	genero: "comedia",
+	imagen: "fullmetal.jpg",
+	video: "toradora2.mp4",
+	descripcion: "Descripcion comedia"
+	},{
+	titulo: "FullMetal Alchemist 18",
+	genero: "comedia",
+	imagen: "fullmetal.jpg",
+	video: "toradora2.mp4",
+	descripcion: "Descripcion comedia"
+	},{
+	titulo: "Kyoukai no Kanata 19",
+	genero: "accion",
+	imagen: "kyoukai.jpg",
+	video: "toradora3.mp4",
+	descripcion: "Descripcion accion"
+	},{
+	titulo: "Kyoukai no Kanata 20",
+	genero: "accion",
+	imagen: "kyoukai.jpg",
+	video: "toradora3.mp4",
+	descripcion: "Descripcion accion"
+	},{
+	titulo: "Kyoukai no Kanata 21",
+	genero: "accion",
+	imagen: "kyoukai.jpg",
+	video: "toradora3.mp4",
+	descripcion: "Descripcion accion"
+	},{
+	titulo: "Naruto 22",
+	genero: "aventura",
+	imagen: "naruto1.jpg",
+	video: "toradora3.mp4",
+	descripcion: "Descripcion aventura"
+	},{
+	titulo: "Naruto 23",
+	genero: "aventura",
+	imagen: "naruto1.jpg",
+	video: "toradora3.mp4",
+	descripcion: "Descripcion aventura"
+	},{
+	titulo: "Naruto 24",
+	genero: "aventura",
+	imagen: "naruto1.jpg",
 	video: "toradora3.mp4",
 	descripcion: "Descripcion aventura"
 	}]
@@ -80,13 +152,18 @@ var usuario = {
 
 var app = angular.module("index",[]);
 
-app.controller('indexController', function($scope,$location,$window){
+app.controller('indexController', function($scope){
+	
+	var peliculas = buscarJson('comedia');
+	$scope.peliculasBloque = [];
+	$scope.peliculasBloque = obtenerTarjetas(0,3,peliculas);
+
+	
 	$scope.buscarGenero = function(genero){
 		var peliculas = buscarJson(genero);
 		$scope.peliculasBloque = [];
-		$scope.peliculasBloque = (obtenerTarjetas(0,3,peliculas));
+		$scope.peliculasBloque = obtenerTarjetas(0,3,peliculas);
 		console.log($scope.peliculasBloque);
-		
 	};
 	$scope.iniciarSesion = function(){
 		if($scope.correo == usuario.correo && $scope.contrasena == usuario.contrasena){
@@ -97,6 +174,19 @@ app.controller('indexController', function($scope,$location,$window){
 			alert('correo o contraseña incorrecta');
 		}
 	};
+	$scope.registrar = function(){
+		console.log("Registrando");
+		if($scope.registroContrasenaP == $scope.registroContrasenaV){
+			var nuevoUsuario = {
+				correo:$scope.registroCorreo,
+				contrasena:$scope.registroContrasenaP
+			}
+			console.log(nuevoUsuario);
+			location.href = 'views/video.html';
+		}else{
+			alert("Las contraseñas no coinciden")
+		}
+	}
 });
 
 function buscarJson(genero){
