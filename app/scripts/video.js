@@ -150,18 +150,18 @@ app.config(function($routeProvider){
 	$routeProvider.when('/busquedaVideo',{templateUrl:'busquedaVideo.html',controller:'busquedaVideoController'})
 				  .when('/reproduccionVideo/:src/:descripcion',{templateUrl:'reproduccionVideo.html',controller:'reproduccionVideoController'})
 });
-app.controller('videoController',function($scope,$location){
+app.controller('videoController',function($scope,$location,myService){
 	$scope.busquedaGenero = function(genero){
-		var peliculas = buscarJson(genero);
+		var peliculas = myService.buscarJson(genero);
 		$scope.peliculasBloque = [];
-		$scope.peliculasBloque.push(obtenerTarjetas(0,3,peliculas));
-		$scope.peliculasBloque.push(obtenerTarjetas(3,6,peliculas));
+		$scope.peliculasBloque.push(myService.obtenerTarjetas(0,3,peliculas));
+		$scope.peliculasBloque.push(myService.obtenerTarjetas(3,6,peliculas));
 		$location.path('/busquedaVideo');
 		console.log($scope.peliculasBloque)
 		console.log('Buscando Video')
 	};
 	$scope.busquedaTexto = function(){
-		var pelicula = buscarPelicula($scope.textoBusqueda);
+		var pelicula = myService.buscarPelicula($scope.textoBusqueda);
 		console.log(pelicula);
 	};	
 });
@@ -174,27 +174,6 @@ app.controller('reproduccionVideoController',function($scope,$routeParams){
 	$scope.src = $routeParams.src;
 	$scope.descripcion = $routeParams.descripcion;
 });
-
-function buscarJson(genero){
-	var conjuntoGenero = [];
-	for (var i = json.peliculas.length - 1; i >= 0; i--) {
-		if(json.peliculas[i].genero == genero){
-			conjuntoGenero.push(json.peliculas[i])
-		}
-	}
-	return conjuntoGenero;
-}
-
-function buscarPelicula(titulo){
-	console.log("Buscado Pelicula");
-	var busqueda;
-	for (var i = json.peliculas.length - 1; i >= 0; i--) {
-		if(json.peliculas[i].titulo == titulo){
-			busqueda = json.peliculas[i]
-			return busqueda
-		}
-	}
-}
 
 function cargarTarjetasAngular(peliculas){
 	console.log("Cargando Pelicuals Angular");
@@ -214,10 +193,31 @@ function cargarTarjetasAngular(peliculas){
 	return peliculasBloque;
 }
 
-function obtenerTarjetas(rangom,rangoM,peliculas){
-	var peliculasFila = [];
-	for (var i = rangom; i < rangoM; i++) {
-		peliculasFila.push(peliculas[i]);
+app.service('myService',function(){
+	this.buscarJson = function(genero){
+		var conjuntoGenero = [];
+		for (var i = json.peliculas.length - 1; i >= 0; i--) {
+			if(json.peliculas[i].genero == genero){
+				conjuntoGenero.push(json.peliculas[i])
+			}
+		}
+		return conjuntoGenero;
 	}
-	return peliculasFila;
-}
+	this.buscarPelicula = function(titulo){
+		console.log("Buscado Pelicula");
+		var busqueda;
+		for (var i = json.peliculas.length - 1; i >= 0; i--) {
+			if(json.peliculas[i].titulo == titulo){
+				busqueda = json.peliculas[i]
+				return busqueda
+			}
+		}
+	}
+	this.obtenerTarjetas = function(rangom,rangoM,peliculas){
+		var peliculasFila = [];
+		for (var i = rangom; i < rangoM; i++) {
+			peliculasFila.push(peliculas[i]);
+		}
+		return peliculasFila;
+	}
+});
