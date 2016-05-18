@@ -152,39 +152,49 @@ var usuario = {
 
 var app = angular.module("index",[]);
 
-app.controller('indexController', function($scope){
+app.service('myService',function(){
+	this.buscarJson = function(genero){
+	var conjuntoGenero = [];
+		for (var i = json.peliculas.length - 1; i >= 0; i--) {
+			if(json.peliculas[i].genero == genero){
+			conjuntoGenero.push(json.peliculas[i])
+			}
+		}
+	return conjuntoGenero;
+	}
+
+this.obtenerTarjetas = function(rangom,rangoM,peliculas){
+	var peliculasFila = [];
+		for (var i = rangom; i < rangoM; i++) {
+			peliculasFila.push(peliculas[i]);
+			}
+		return peliculasFila;
+		}
+});
+
+
+app.controller('indexController', function($scope, myService){
 	
-	var peliculas = buscarJson('comedia');
+	var peliculas = myService.buscarJson('comedia');
 	$scope.peliculasBloque = [];
-	$scope.peliculasBloque = obtenerTarjetas(0,3,peliculas);
+	$scope.peliculasBloque = myService.obtenerTarjetas(0,3,peliculas);
 
 	
 	$scope.buscarGenero = function(genero){
-		var peliculas = buscarJson(genero);
+		var peliculas = myService.buscarJson(genero);
 		$scope.peliculasBloque = [];
-		$scope.peliculasBloque = obtenerTarjetas(0,3,peliculas);
+		$scope.peliculasBloque = myService.obtenerTarjetas(0,3,peliculas);
 		console.log($scope.peliculasBloque);
 	};
 	$scope.iniciarSesion = function(){
 		if($scope.correo == usuario.correo && $scope.contrasena == usuario.contrasena){
-			console.log($scope.correo);
-			console.log($scope.contrasena);
+			//console.log($scope.correo);
+			//console.log($scope.contrasena);
 			location.href='views/video.html';
 		}else{
 			alert('correo o contraseña incorrecta');
 		}
-<<<<<<< HEAD
-		else{
-			$scope.usuario.name = "Error";
-		}	
 	}	
-	$scope.nuevoUsuario = function(){
-		//$location.url.href = "views/Reg.html";
-		$scope.registro = "views/Reg.html";
-	}
-
-=======
-	};
 	$scope.registrar = function(){
 		console.log("Registrando");
 		if($scope.registroContrasenaP == $scope.registroContrasenaV){
@@ -198,23 +208,4 @@ app.controller('indexController', function($scope){
 			alert("Las contraseñas no coinciden")
 		}
 	}
->>>>>>> origin/master
 });
-
-function buscarJson(genero){
-	var conjuntoGenero = [];
-	for (var i = json.peliculas.length - 1; i >= 0; i--) {
-		if(json.peliculas[i].genero == genero){
-			conjuntoGenero.push(json.peliculas[i])
-		}
-	}
-	return conjuntoGenero;
-}
-
-function obtenerTarjetas(rangom, rangoM, peliculas){
-	var peliculasFila = [];
-	for (var i = rangom ; i < rangoM; i++) {
-		peliculasFila.push(peliculas[i]);
-	};
-	return peliculasFila;
-}
