@@ -5,7 +5,8 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var schema = mongoose.Schema;
-var uristring = 'mongodb://localhost/movies';
+//var uristring = 'mongodb://localhost/movies';
+var uristring = 'mongodb://kevin:kevin@ds025232.mlab.com:25232/movies';
 
 mongoose.connect(uristring,function(error,response){
 	if(error){
