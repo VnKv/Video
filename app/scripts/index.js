@@ -145,15 +145,10 @@ var json = {
 	descripcion: "Descripcion aventura"
 	}]
 };
-var usuario = {
-	correo:"e@g.com",
-	contrasena:"asd"
-}
 var app = angular.module("index",[]);
 app.controller('indexController', function($scope,myService,dbpeliculas){
 	
 	dbpeliculas.searchGenre('terror').then(function successCallback(response){	
-		console.log(response.data);
 		var peliculas = response.data;
 		$scope.peliculasBloque = [];
 		$scope.peliculasBloque = myService.obtenerTarjetas(0,3,peliculas);
@@ -161,7 +156,6 @@ app.controller('indexController', function($scope,myService,dbpeliculas){
 	},function errorCallback(response){
 		console.log("Error al buscar por genero");
 	});
-
 	$scope.buscarGenero = function(genero){
 		dbpeliculas.searchGenre(genero).then(function successCallback(response){	
 			console.log(response.data);
@@ -174,21 +168,36 @@ app.controller('indexController', function($scope,myService,dbpeliculas){
 		});	
 	};
 	$scope.iniciarSesion = function(){
-		if($scope.correo == usuario.correo && $scope.contrasena == usuario.contrasena){
-			location.href='views/video.html';
-		}else{
-			alert('correo o contraseña incorrecta');
+		var usuario = {
+			email: $scope.correo,
+			password: $scope.contrasena
 		}
+		console.log(usuario);
+		dbpeliculas.searchUser(usuario).then(function successCallback(response){	
+			console.log(response);
+			if(response.data.response){
+				location.href='views/video.html';
+			}else{
+				alert('Correo o Contraseña incorrecta');
+			}
+		},function errorCallback(response){
+			console.log("Error al iniciarSesion");
+		});
 	}	
 	$scope.registrar = function(){
 		console.log("Registrando");
 		if($scope.registroContrasenaP == $scope.registroContrasenaV){
-			var nuevoUsuario = {
-				correo:$scope.registroCorreo,
-				contrasena:$scope.registroContrasenaP
+			var usuario = {
+				email:$scope.registroCorreo,
+				password:$scope.registroContrasenaP
 			}
-			console.log(nuevoUsuario);
-			location.href = 'views/video.html';
+			dbpeliculas.createUser(usuario).then(function successCallback(response){	
+				console.log(response.data);
+				alert("nuevoUsuario");
+				location.href = 'views/video.html';
+			},function errorCallback(response){
+				console.log("Error al crear");
+			});			
 		}else{
 			alert("Las contraseñas no coinciden")
 		}
@@ -223,6 +232,17 @@ app.factory('dbpeliculas',function($http){
 			return $http.get('http://localhost:3000/api/genero',{
 				params: {
 					genero : genero
+				}
+			});
+		},
+		createUser: function(usuario){
+			return $http.post('http://localhost:3000/api/usuario',usuario);
+		},
+		searchUser: function(usuario){
+			return $http.get('http://localhost:3000/api/inicioSesion',{
+				params: {
+					email : usuario.email,
+					password : usuario.password
 				}
 			});
 		}

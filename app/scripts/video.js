@@ -145,13 +145,6 @@ app.config(function($routeProvider){
 				  .when('/reproduccionVideo/:src/:descripcion',{templateUrl:'reproduccionVideo.html',controller:'reproduccionVideoController'})
 });
 app.controller('videoController',function($scope,$location,myService,$http,dbpeliculas){
-	var jsonpeliculas = [];
-	dbpeliculas.getMovies().then(function successCallback(response){	
-		jsonpeliculas = response.data;
-		console.log(jsonpeliculas);
-	},function errorCallback(response){
-		console.log("Error al buscar");
-	});
 	$scope.busquedaGenero = function(genero){
 		dbpeliculas.searchGenre(genero).then(function successCallback(response){	
 			console.log(response.data);
@@ -184,6 +177,8 @@ app.controller('busquedaVideoController',function($scope,$location){
 	};
 });
 app.controller('reproduccionVideoController',function($scope,$routeParams){
+	console.log($routeParams.src)
+	console.log($routeParams.descripcion)
 	$scope.src = $routeParams.src;
 	$scope.descripcion = $routeParams.descripcion;
 });

@@ -44,6 +44,13 @@ var peliculas = mongoose.model('peliculas',new schema(
 }
 ));
 
+var usuarios = mongoose.model('usuarios',new schema(
+{
+	email: String,
+	password : String
+}
+));
+
 app.get('/api/peliculas',function(request,response){
 	peliculas.find(function(error,peliculasList){
 		if(error){
@@ -87,6 +94,36 @@ app.get('/api/genero',function(request,response){
 				response.send("Lista Vacia");	
 			}
 			
+		}
+	})
+});
+
+app.post('/api/usuario',function(request,response){
+	usuarios.create({
+		email: request.body.email,
+		password: request.body.password
+	},function(error){
+		if(error){
+			response.send(error);
+		}else{
+			response.json({'response':true});
+		}
+		
+	});
+});
+
+app.get('/api/inicioSesion',function(request,response){
+	var query = {email: request.query.email, password:request.query.password};
+	usuarios.find(query,function(error,userList){
+		console.log(userList)
+		if(error){
+			response.send(error);
+		}else{
+			if(userList.length > 0){
+				response.send({'response':true});	
+			}else{
+				response.send({'response':false});	
+			}
 		}
 	})
 });
