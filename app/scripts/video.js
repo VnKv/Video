@@ -1,11 +1,5 @@
 var json = {
 	peliculas : [{
-	titulo: "El Viaje de Chihiro 1",
-	genero: "terror",
-	imagen: "chihiro.jpg",
-	video: "toradora2.mp4",
-	descripcion: "Descripcion terror"
-	},{
 	titulo: "El Viaje de Chihiro 2",
 	genero: "terror",
 	imagen: "chihiro.jpg",
@@ -150,19 +144,38 @@ app.config(function($routeProvider){
 	$routeProvider.when('/busquedaVideo',{templateUrl:'busquedaVideo.html',controller:'busquedaVideoController'})
 				  .when('/reproduccionVideo/:src/:descripcion',{templateUrl:'reproduccionVideo.html',controller:'reproduccionVideoController'})
 });
-app.controller('videoController',function($scope,$location,myService){
+app.controller('videoController',function($scope,$location,myService,$http,dbpeliculas){
+	var jsonpeliculas = [];
+	dbpeliculas.getMovies().then(function successCallback(response){	
+		jsonpeliculas = response.data;
+		console.log(jsonpeliculas);
+	},function errorCallback(response){
+		console.log("Error al buscar");
+	});
 	$scope.busquedaGenero = function(genero){
-		var peliculas = myService.buscarJson(genero);
-		$scope.peliculasBloque = [];
-		$scope.peliculasBloque.push(myService.obtenerTarjetas(0,3,peliculas));
-		$scope.peliculasBloque.push(myService.obtenerTarjetas(3,6,peliculas));
-		$location.path('/busquedaVideo');
-		console.log($scope.peliculasBloque)
-		console.log('Buscando Video')
+		dbpeliculas.searchGenre(genero).then(function successCallback(response){	
+			console.log(response.data);
+			var peliculas = response.data;
+			$scope.peliculasBloque = [];
+			$scope.peliculasBloque.push(myService.obtenerTarjetas(0,3,peliculas));
+			$scope.peliculasBloque.push(myService.obtenerTarjetas(3,6,peliculas));
+			$location.path('/busquedaVideo');
+			console.log($scope.peliculasBloque)
+		},function errorCallback(response){
+			console.log("Error al buscar por genero");
+		});		
 	};
 	$scope.busquedaTexto = function(){
-		var pelicula = myService.buscarPelicula($scope.textoBusqueda);
-		console.log(pelicula);
+		dbpeliculas.searchMovie($scope.textoBusqueda).then(function successCallback(response){	
+			console.log(response.data);
+			var peliculas = response.data;
+			$scope.peliculasBloque = [];
+			$scope.peliculasBloque.push(myService.obtenerTarjetas(0,3,peliculas));
+			$scope.peliculasBloque.push(myService.obtenerTarjetas(3,6,peliculas));
+			$location.path('/busquedaVideo');
+		},function errorCallback(response){
+			console.log("Error al buscar pelicula");
+		});
 	};	
 });
 app.controller('busquedaVideoController',function($scope,$location){
@@ -194,30 +207,37 @@ function cargarTarjetasAngular(peliculas){
 }
 
 app.service('myService',function(){
-	this.buscarJson = function(genero){
-		var conjuntoGenero = [];
-		for (var i = json.peliculas.length - 1; i >= 0; i--) {
-			if(json.peliculas[i].genero == genero){
-				conjuntoGenero.push(json.peliculas[i])
-			}
-		}
-		return conjuntoGenero;
-	}
-	this.buscarPelicula = function(titulo){
-		console.log("Buscado Pelicula");
-		var busqueda;
-		for (var i = json.peliculas.length - 1; i >= 0; i--) {
-			if(json.peliculas[i].titulo == titulo){
-				busqueda = json.peliculas[i]
-				return busqueda
-			}
-		}
-	}
 	this.obtenerTarjetas = function(rangom,rangoM,peliculas){
+		while(peliculas.length < rangoM){
+			rangoM = rangoM - 1;
+		}
 		var peliculasFila = [];
 		for (var i = rangom; i < rangoM; i++) {
 			peliculasFila.push(peliculas[i]);
 		}
-		return peliculasFila;
+		return peliculasFila;	
 	}
+});
+
+app.factory('dbpeliculas',function($http){
+	var dbpelicula = {
+		getMovies: function(){
+			return $http.get('http://localhost:3000/api/peliculas');
+		},
+		searchMovie: function(pelicula){
+			return $http.get('http://localhost:3000/api/pelicula',{
+				params: {
+					titulo : pelicula
+				}
+			});
+		},
+		searchGenre: function(genero){
+			return $http.get('http://localhost:3000/api/genero',{
+				params: {
+					genero : genero
+				}
+			});
+		}
+	};
+	return dbpelicula;
 });
