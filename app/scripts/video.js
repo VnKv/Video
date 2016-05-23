@@ -76,17 +76,17 @@ app.service('myService',function(){
 app.factory('dbpeliculas',function($http){
 	var dbpelicula = {
 		getMovies: function(){
-			return $http.get('http://localhost:3000/api/peliculas');
+			return $http.get('/api/peliculas');
 		},
 		searchMovie: function(pelicula){
-			return $http.get('http://localhost:3000/api/pelicula',{
+			return $http.get('/api/pelicula',{
 				params: {
 					titulo : pelicula
 				}
 			});
 		},
 		searchGenre: function(genero){
-			return $http.get('http://localhost:3000/api/genero',{
+			return $http.get('/api/genero',{
 				params: {
 					genero : genero
 				}

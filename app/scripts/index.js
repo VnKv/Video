@@ -82,17 +82,17 @@ app.service('myService',function(){
 app.factory('dbpeliculas',function($http){
 	var dbpelicula = {
 		searchGenre: function(genero){
-			return $http.get('http://localhost:3000/api/genero',{
+			return $http.get('/api/genero',{
 				params: {
 					genero : genero
 				}
 			});
 		},
 		createUser: function(usuario){
-			return $http.post('http://localhost:3000/api/usuario',usuario);
+			return $http.post('/api/usuario',usuario);
 		},
 		searchUser: function(usuario){
-			return $http.get('http://localhost:3000/api/inicioSesion',{
+			return $http.get('/api/inicioSesion',{
 				params: {
 					email : usuario.email,
 					password : usuario.password
